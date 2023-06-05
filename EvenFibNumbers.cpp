@@ -4,22 +4,25 @@ using namespace std;
 
 int main(){
 
-vector<long> table;
+vector<long long unsigned> table;
 table.push_back(1);
 
-long sum=0;
+long long unsigned sum=0;
+int cnt=0;
 
-for(int i=0;i<=4000000;i++){
-long term=table[i-1];
+for(int i=0;i<24;i++){
+long long unsigned term=table[i-1];
 table.push_back(term+table[i]);
-if(table[i]%2==0){
-sum+=table[i];
-}
+cnt++;
+if(cnt==3){
+if(sum<=4000000){
 cout<<table[i]<<"\n";
-};
-
-cout<<"Considering the fibbonacci sequence whoes value do not exceed four million, find the sum of the even-valued terms:"<<sum;
-
+sum+=table[i];
+cnt=0;
+}
+}
+}
+cout<<"Sum of even valued numbers: "<<sum;
 
 return 0;
 };
