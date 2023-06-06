@@ -4,25 +4,21 @@ using namespace std;
 
 int main(){
 
-vector<long long unsigned> table;
+vector<long long unsigned>table;
 table.push_back(1);
+table.push_back(2);
 
-long long unsigned sum=0;
-int cnt=0;
+long long unsigned fibsum=2;
 
-for(int i=0;i<24;i++){
-long long unsigned term=table[i-1];
-table.push_back(term+table[i]);
-cnt++;
-if(cnt==3){
-if(sum<=4000000){
-cout<<table[i]<<"\n";
-sum+=table[i];
-cnt=0;
+while(table[table.size()-1]<=4000000){
+long long unsigned fibvalue=(table[table.size()-1])+(table[table.size()-2]);
+table.push_back(fibvalue);
+if(fibvalue%2==0){
+fibsum+=fibvalue;
 }
 }
-}
-cout<<"Sum of even valued numbers: "<<sum;
+
+cout<<fibsum<<"\n";
 
 return 0;
 };
